@@ -1,0 +1,1 @@
+Place your `.eragesoundset` directories here.
