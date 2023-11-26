@@ -9,7 +9,7 @@
   <key>SoundSetURL</key>
   <string>http://www.microsoft.com/mac</string>
   <key>SoundSetDownloadURL</key>
-  <string>https://raw.githubusercontent.com/knoeone/Soundsetr-soundsets/main/dist/Default%20Outlook%20Sounds.zip</string>
+  <string>https://raw.githubusercontent.com/knoeone/soundsetr-soundsets/main/dist/Default%20Outlook%20Sounds.eragesoundset.zip</string>
   <key>SoundFile_MailError</key>
   <string>mailerror.wav</string>
   <key>SoundFile_MailSent</key>
