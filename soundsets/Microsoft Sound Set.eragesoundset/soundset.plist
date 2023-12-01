@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SoundSetFileFormatVersion</key>
+	<integer>0</integer>
+	<key>SoundSetUserString</key>
+	<string>The soundset from Microsoft's Entourage 2004 for Mac, preserved for Outlook for Mac 2016, 2019, or 2021</string>
+	<key>SoundSetURL</key>
+	<string>https://github.com/l337-haxx0r/microsoft-soundset</string>
+	<key>SoundFile_MailError</key>
+	<string>Error.aif</string>
+	<key>SoundFile_MailSent</key>
+	<string>Sent Mail.aif</string>
+	<key>SoundFile_NewMail</key>
+	<string>New Mail.aif</string>
+	<key>SoundFile_NoMail</key>
+	<string>No Mail.aif</string>
+	<key>SoundFile_Reminder</key>
+	<string>Reminder.aif</string>
+	<key>SoundFile_Welcome</key>
+	<string>Welcome.aif</string>
+</dict>
+</plist>
