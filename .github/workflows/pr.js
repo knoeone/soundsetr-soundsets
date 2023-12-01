@@ -52,6 +52,7 @@ module.exports = async ({ github, context }) => {
       'SoundSetURL',
       'SoundSetDownloadURL',
       'SoundSetIconURL',
+      'ImageFile_Icon',
     ]
 
     required.forEach(key => {
@@ -71,7 +72,7 @@ module.exports = async ({ github, context }) => {
     allowedFiles.push(`soundsets/${dir}/README.md`)
     allowedFiles.push(`soundsets/${dir}/soundset.plist`)
 
-    if (list.SoundSetIconURL)  {
+    if (list.ImageFile_Icon)  {
       if (!paths.includes(`soundsets/${dir}/${list[file]}`)) {
         console.log(`⛔️ Missing icon file: ${list[file]}`)
         process.exit(1)

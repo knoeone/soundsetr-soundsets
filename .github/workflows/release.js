@@ -26,6 +26,11 @@ module.exports = async ({github, context, exec}) => {
     const zipFileName = getZipName(dir)
     console.log(zipFileName)
     list.SoundSetDownloadURL = `https://github.com/${owner}/${repo}/releases/download/v${pull_number}/${zipFileName}`
+    if (list.ImageFile_Icon) {
+      list.SoundSetIconURL = `https://github.com/${owner}/${repo}/raw/main/soundsets/${dir}/${list.ImageFile_Icon}`
+    } else {
+      list.SoundSetIconURL = ''
+    }
     fs.writeFileSync(plistFile, plist.build(list), 'utf-8')
 
     const output = await exec.exec('zip', ['-r', zipFileName, dir], { cwd: './soundsets' })
