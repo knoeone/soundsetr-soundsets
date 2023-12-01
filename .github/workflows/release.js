@@ -5,8 +5,8 @@ module.exports = async ({github, context, exec}) => {
 
   const pull_number = context.pull_number || context.payload.pull_request.number
   const { owner, repo } = context.repo
-  const files = await github.rest.pulls.listFiles({ owner, repo, pull_number });
-  const sourceRepo = await github.rest.pulls.get({ owner, repo, pull_number });
+  const files = await github.rest.pulls.listFiles({ owner, repo, pull_number })
+  const sourceRepo = await github.rest.pulls.get({ owner, repo, pull_number })
 
   //console.log(files.data)
 
@@ -45,6 +45,7 @@ module.exports = async ({github, context, exec}) => {
         found = true
         return downloadItem
       }
+      return item
     })
     if (!found) {
       json.push(downloadItem)
@@ -57,7 +58,7 @@ module.exports = async ({github, context, exec}) => {
     tag_name: `v${pull_number}`,
     name: `v${pull_number}`,
     body: `Bundles latest assets:\n\n ${dirs.map(d => `- ${d}`).join('\n')}`,
-  });
+  })
   // console.log(release)
 
   let uploads = []
@@ -100,7 +101,7 @@ module.exports = async ({github, context, exec}) => {
     repo,
     release_id: mainRelease.data.id,
     name: `soundsets.json`,
-    data: JSON.stringify(json),
+    data: JSON.stringify(json, null, 2),
     'headers.content-type': 'application/json',
     'headers': {
       'content-type': 'application/json',
@@ -111,7 +112,7 @@ module.exports = async ({github, context, exec}) => {
   //   owner,
   //   repo,
   //   path: `soundsets.json`,
-  // });
+  // })
 
   // const asset = await github.rest.repos.createOrUpdateFileContents({
   //   owner,
@@ -120,6 +121,6 @@ module.exports = async ({github, context, exec}) => {
   //   message: 'Updated soundsets.json',
   //   content: Buffer.from(JSON.stringify(json)).toString('base64'),
   //   sha: oldAsset.data.sha,
-  // });
+  // })
   console.log(asset)
 }

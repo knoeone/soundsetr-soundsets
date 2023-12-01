@@ -10,7 +10,7 @@ module.exports = async ({ github, context }) => {
   const pull_number = context.payload.pull_request.number
   //console.log(context.payload.pull_request)
   const { owner, repo } = context.repo
-  const files = await github.rest.pulls.listFiles({ owner, repo, pull_number });
+  const files = await github.rest.pulls.listFiles({ owner, repo, pull_number })
   //console.log(files.data)
 
   const dirs = [...new Set(files.data.map(d => d.filename.split('/')[1]).filter(d => d.indexOf('.eragesoundset') > -1))]
@@ -26,7 +26,7 @@ module.exports = async ({ github, context }) => {
   const allowedFiles = []
 
   dirs.forEach(dir => {
-    const list = plist.parse(fs.readFileSync(`./soundsets/${dir}/soundset.plist`, 'utf-8'));
+    const list = plist.parse(fs.readFileSync(`./soundsets/${dir}/soundset.plist`, 'utf-8'))
     if (!dirs.length) {
       console.log('⛔️ No or invalid soundset.plist')
       process.exit(1)
@@ -144,7 +144,7 @@ module.exports = async ({ github, context }) => {
   //   owner,
   //   repo,
   //   path: `soundsets.json`,
-  // });
+  // })
 
   // const asset = await github.rest.repos.createOrUpdateFileContents({
   //   owner,
