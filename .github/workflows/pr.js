@@ -2,7 +2,6 @@
 const MAX_SIZE_AUDIO = 5 * 1024 * 1024 // 5 MB
 const MAX_SIZE_ICON = 1 * 1024 * 1024 // 1 MB
 
-
 module.exports = async ({ github, context }) => {
   const plist = require('plist')
   const fs = require('fs')
@@ -120,4 +119,40 @@ module.exports = async ({ github, context }) => {
   // @todo check for owner by filename
 
   console.log('✅ All checks passed')
+
+  // const blob = await github.rest.git.createBlob({
+  //   owner,
+  //   repo,
+  //   content,
+  //   encoding: 'base64',
+  // })
+
+  // const tree = await github.rest.git.createTree({
+  //   owner,
+  //   repo,
+  //   tree: process.env.GITHUB_SHA,
+  // })
+
+  // const commit = await github.rest.git.createCommit({
+  //   owner,
+  //   repo,
+  //   message: 'Updated soundsets.json',
+  //   tree: process.env.GITHUB_SHA,
+  // })
+
+  // const oldAsset = await github.rest.repos.getContent({
+  //   owner,
+  //   repo,
+  //   path: `soundsets.json`,
+  // });
+
+  // const asset = await github.rest.repos.createOrUpdateFileContents({
+  //   owner,
+  //   repo,
+  //   path: `soundsets.json`,
+  //   message: 'Updated soundsets.json',
+  //   content: Buffer.from(JSON.stringify(json)).toString('base64'),
+  //   sha: oldAsset.data.sha,
+  //   branch: context.payload.pull_request.head.ref,
+  // })
 }

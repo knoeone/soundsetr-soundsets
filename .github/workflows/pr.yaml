@@ -11,10 +11,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-      - run: npm install plist mime-types
+      - name: Installn node packages
+        run: npm install plist mime-types
       - name: Verify
         uses: actions/github-script@v7
         with:
