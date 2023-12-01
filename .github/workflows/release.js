@@ -12,8 +12,9 @@ module.exports = async ({github, context, exec}) => {
 
   const dirs = [...new Set(files.data.map(d => d.filename.split('/')[1]).filter(d => d.indexOf('.eragesoundset') > -1))]
   //console.log(dirs)
-
-  const json = await fetch(`https://github.com/${owner}/${repo}/releases/download/soundsets.json/soundsets.json`, {redirect: 'follow'}).then(r => r.json())
+  const url = `https://github.com/${owner}/${repo}/releases/download/soundsets.json/soundsets.json`
+  console.log(url)
+  const json = await fetch(url, {redirect: 'follow'}).then(r => r.json())
 //  const json = JSON.parse(fs.readFileSync('./soundsets.json', 'utf-8'))
 
   const getZipName = dir => `${dir.replace(/[^a-z0-9-_\(\)\. ]/gi, '').trim().replaceAll(' ', '.')}.zip`

@@ -8,7 +8,7 @@ module.exports = async ({ github, context }) => {
   const mime = require('mime-types')
 
   const pull_number = context.payload.pull_request.number
-  console.log(context.payload.pull_request)
+  //console.log(context.payload.pull_request)
   const { owner, repo } = context.repo
   const files = await github.rest.pulls.listFiles({ owner, repo, pull_number });
   //console.log(files.data)
