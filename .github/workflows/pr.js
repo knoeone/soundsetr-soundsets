@@ -102,7 +102,7 @@ module.exports = async ({ github, context }) => {
         process.exit(1)
       }
       const type = mime.lookup(`soundsets/${dir}/${list[file]}`)
-      if (type !== 'audio/aiff' && type !== 'audio/wav' && type !== 'audio/wave') {
+      if (type !== 'audio/aiff' && type !== 'audio/wav' && type !== 'audio/wave' && type !== 'audio/x-aiff') {
         console.log(`⛔️ Audio file must be WAV or AIFF: ${list[file]} @ ${type}`)
         process.exit(1)
       }
