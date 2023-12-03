@@ -73,22 +73,22 @@ module.exports = async ({ github, context }) => {
     allowedFiles.push(`soundsets/${dir}/soundset.plist`)
 
     if (list.ImageFile_Icon)  {
-      if (!paths.includes(`soundsets/${dir}/${list[file]}`)) {
-        console.log(`⛔️ Missing icon file: ${list[file]}`)
+      if (!paths.includes(`soundsets/${dir}/${list.ImageFile_Icon}`)) {
+        console.log(`⛔️ Missing icon file: ${list.ImageFile_Icon}`)
         process.exit(1)
       }
-      const stats = fs.statSync(`soundsets/${dir}/${list[file]}`)
+      const stats = fs.statSync(`soundsets/${dir}/${list.ImageFile_Icon}`)
       const size = parseInt(stats.size) / 1024 / 1024
       if (size > MAX_SIZE_ICON) {
-        console.log(`⛔️ Icon file too large: ${list[file]} @ ${size}`)
+        console.log(`⛔️ Icon file too large: ${list.ImageFile_Icon} @ ${size}`)
         process.exit(1)
       }
-      const type = mime.lookup(`soundsets/${dir}/${list[file]}`)
+      const type = mime.lookup(`soundsets/${dir}/${list.ImageFile_Icon}`)
       if (type !== 'image/png' && type !== 'image/jpeg' && type !== 'image/jpg') {
-        console.log(`⛔️ Icon file must be PNG or JPEG: ${list[file]} @ ${type}`)
+        console.log(`⛔️ Icon file must be PNG or JPEG: ${list.ImageFile_Icon} @ ${type}`)
         process.exit(1)
       }
-      allowedFiles.push(`soundsets/${dir}/${list[file]}`)
+      allowedFiles.push(`soundsets/${dir}/${list.ImageFile_Icon}`)
     }
 
     filenames.forEach(file => {
